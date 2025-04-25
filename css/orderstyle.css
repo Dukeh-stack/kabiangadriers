@@ -1,0 +1,39 @@
+#order-status {
+    padding: 20px;
+    background: #f4f4f4;
+  }
+  
+  .status-steps {
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+    margin-top: 15px;
+  }
+  
+  .status-box {
+    padding: 15px 25px;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    background-color: gray;
+    flex: 1;
+    text-align: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .status-box.active {
+    background-color: green;
+  }
+  
+  .status-box.current {
+    background-color: orange;
+  }
+  #order-status h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#userOrdersTable th, #userOrdersTable td {
+    text-align: center;
+}
+  

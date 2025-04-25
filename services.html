@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>DRYME - Free Laundry Service Website Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        /* Style for image containers */
+        .scroll-container {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding: 20px;
+        }
+    
+        .scroll-container img {
+            height: 200px;
+            border-radius: 15px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+    
+        .scroll-container img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+    
+        .services-list {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 30px;
+        }
+    
+        .service {
+            text-align: center;
+            max-width: 220px;
+        }
+    
+        .service img {
+            width: 100%;
+            height: 180px;
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+        }
+    
+        .service img:hover {
+            transform: scale(1.05);
+        }
+    
+        .service p {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+    
+        .service input {
+            width: 100%;
+            padding: 5px 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+    
+    /* ...your existing styles... */
+
+    /* Enhanced Service Styling */
+    #services {
+        padding: 40px 20px;
+        background-color: #f9f9f9;
+        text-align: center;
+    }
+
+    #services h2 {
+        font-size: 2rem;
+        color: #333;
+        margin-bottom: 30px;
+    }
+
+    #services h3 {
+        margin-top: 40px;
+        color: #444;
+    }
+
+    #services input[type="number"],
+    #services input[type="date"],
+    #services input[type="time"],
+    #services select {
+        width: 250px;
+        padding: 8px 12px;
+        margin: 10px;
+        border: 1px solid #bbb;
+        border-radius: 8px;
+        font-size: 16px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    #submit-order {
+        background-color: #007bff;
+        color: white;
+        font-size: 16px;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 8px;
+        margin-top: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    #submit-order:hover {
+        background-color: #0056b3;
+    }
+
+    #order-summary {
+        margin-top: 30px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+</style>
+
+   
+    
+    
+    
+
+    <!-- Firebase App and Database SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.12.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.12.0/firebase-database.js"></script>
+
+</head>
+
+<body>
+    <!-- Topbar Start -->
+    <div class="container-fluid bg-primary py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-lg-left mb-2 mb-lg-0">
+                    <div class="d-inline-flex align-items-center">
+                        <a class="text-white pr-3" href="">FAQs</a>
+                        <span class="text-white">|</span>
+                        <a class="text-white px-3" href="">Help</a>
+                        <span class="text-white">|</span>
+                        <a class="text-white pl-3" href="">Support</a>
+                    </div>
+                </div>
+                <div class="col-md-6 text-center text-lg-right">
+                    <div class="d-inline-flex align-items-center">
+                        <a class="text-white px-3" href="">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a class="text-white px-3" href="">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a class="text-white px-3" href="">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a class="text-white px-3" href="">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a class="text-white pl-3" href="">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <div class="container-fluid position-relative nav-bar p-0">
+        <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
+            <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 pl-3 pl-lg-5">
+                <a href="" class="navbar-brand">
+                    <h1 class="m-0 text-secondary"><span class="text-primary">DRY</span>ME</h1>
+                </a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto py-0">
+                        <a href="about.html" class="nav-item nav-link">Home</a>
+                        <a href="services.html" class="nav-item nav-link">Services</a>
+                        <a href="orderStatus.html" class="nav-item nav-link">OrderStatus</a>
+                        <a href="payment.html" class="nav-item nav-link">Payment</a>
+                        <a href="contact.html" class="nav-item nav-link">Contact Us</a>
+                        <a href="help.html" class="nav-item nav-link">Help</a>
+                        <a href="admin.html" class="nav-item nav-link">Admin</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+    <section id="services">
+        <h2>Our Services</h2>
+        <div class="scroll-container">
+            <img src="images/paramatex-dry-cleaning.jpg" alt="Dry Cleaning">
+            <img src="images/ironing.jpg" alt="Ironing">
+            <img src="images/folding.jpg" alt="Folding">
+        </div>
+
+        <div class="services-list">
+            <div class="service">
+                <img src="images/paramatex-dry-cleaning.jpg">
+                <p>Dry Cleaning - KES 100/item</p>
+                <input type="number" placeholder="No. of items" class="item-count" data-price="100">
+            </div>
+            <div class="service">
+                <img src="images/ironing2.jpg">
+                <p>Ironing - KES 50/item</p>
+                <input type="number" placeholder="No. of items" class="item-count" data-price="50">
+            </div>
+        </div>
+
+        <div id="order-summary"></div>
+
+        <h3>Schedule Pickup</h3>
+        <label>Pick Place:</label>
+        <select id="pickup-place">
+            <option>Chepnyoga</option>
+            <option>Kapmaso</option>
+            <option>Kabianga</option>
+            <option>Paris</option>
+            <option>Factory</option>
+            <option>Taplotin</option>
+        </select>
+        <label>Pickup Date:</label>
+        <input type="date" id="pickup-date">
+        <label>Pickup Time:</label>
+        <input type="time" id="pickup-time">
+        <label>Delivery Date:</label>
+        <input type="date" id="delivery-date">
+        <label>Delivery Time:</label>
+        <input type="time" id="delivery-time">
+
+        <button id="submit-order">Place Order</button>
+    </section>
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-primary text-white mt-5 pt-5 px-sm-3 px-md-5">
+        <div class="row pt-5">
+            <div class="col-lg-3 col-md-6 mb-5">
+                <a href=""><h1 class="text-secondary mb-3"><span class="text-white">DRY</span>ME</h1></a>
+                <p>You can easily connect with us on our social media platforms to stay updated with the latest offers, news, and promotions.</p>
+                <div class="d-flex justify-content-start mt-4">
+                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 38px; height: 38px;" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 38px; height: 38px;" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 38px; height: 38px;" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 38px; height: 38px;" href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h4 class="text-white mb-4">Get In Touch</h4>
+                <p>Feel free to reach out to us via our contact form, email, or social media channels, and we'll be happy to assist you with any inquiries or support you need.</p>
+                <p><i class="fa fa-map-marker-alt mr-2"></i>Kabianga Street, Kericho,KENYA</p>
+                <p><i class="fa fa-phone-alt mr-2"></i>+254 111 929550</p>
+                <p><i class="fa fa-envelope mr-2"></i>kabiangacleaners@gmail.com</p>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h4 class="text-white mb-4">Quick Links</h4>
+                <div class="d-flex flex-column justify-content-start">
+                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>About Us</a>
+                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Services</a>
+                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Pricing</a>
+                    <a class="text-white" href="#"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h4 class="text-white mb-4">Newsletter</h4>
+                <form action="">
+                    <div class="form-group">
+                        <input type="text" class="form-control border-0" placeholder="Your Name" required="required" />
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control border-0" placeholder="Your Email" required="required" />
+                    </div>
+                    <div>
+                        <button class="btn btn-lg btn-secondary btn-block border-0" type="submit">Submit Now</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid bg-dark text-white py-4 px-sm-3 px-md-5">
+        <p class="m-0 text-center text-white">
+            &copy; <a class="text-white font-weight-medium" href="#">Your Site Name</a>. All Rights Reserved. 
+			
+			<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+			Designed by <a class="text-white font-weight-medium" href="https://htmlcodex.com">HTML Codex</a>
+        </p>
+    </div>
+    <!-- Footer End -->
+
+    <script src="app.js"></script>
+    <!-- jQuery, Popper.js, Bootstrap JS (REQUIRED for responsive navbar) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+<!-- Make sure your script includes the right SDKs -->
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+    import { getDatabase, ref as rtdbRef, set as rtdbSet } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+  
+    // Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyCMOe5WGwL2g03J0O08C_H-_LVD1OjTWtg",
+      authDomain: "laundrywebapp-71232.firebaseapp.com",
+      projectId: "laundrywebapp-71232",
+      storageBucket: "laundrywebapp-71232.appspot.com",
+      messagingSenderId: "260962124147",
+      appId: "1:260962124147:web:be4871909dc42077638506",
+      databaseURL: "https://laundrywebapp-71232-default-rtdb.firebaseio.com"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getDatabase(app);
+    const firestore = getFirestore(app);
+  
+    // Order submission logic
+    document.getElementById("submit-order").addEventListener("click", () => {
+      const services = [];
+      let totalAmount = 0;
+  
+      document.querySelectorAll(".service").forEach(service => {
+        const input = service.querySelector(".item-count");
+        const count = parseInt(input.value);
+        const price = parseInt(input.getAttribute("data-price"));
+  
+        if (!isNaN(count) && count > 0) {
+          const serviceName = service.querySelector("p").textContent;
+          const totalPrice = count * price;
+          services.push({ serviceName, count, unitPrice: price, totalPrice });
+          totalAmount += totalPrice;
+        }
+      });
+  
+      const order = {
+        services,
+        totalAmount,
+        pickupPlace: document.getElementById("pickup-place").value,
+        pickupDate: document.getElementById("pickup-date").value,
+        pickupTime: document.getElementById("pickup-time").value,
+        deliveryDate: document.getElementById("delivery-date").value,
+        deliveryTime: document.getElementById("delivery-time").value,
+        status: "Pending",
+        timestamp: new Date().toISOString()
+      };
+  
+      // Make sure user is logged in before sending data
+      onAuthStateChanged(auth, async (user) => {
+        if (user) {
+          const uid = user.uid;
+  
+          // 🔄 Save order to Realtime Database
+          const rtdbPath = rtdbRef(db, `orders/${uid}/${Date.now()}`);
+          await rtdbSet(rtdbPath, order);
+  
+          // 📂 Save order to Firestore (with user ID)
+          await addDoc(collection(firestore, "orders"), {
+            ...order,
+            userId: uid
+          });
+  
+          alert("Order placed successfully!");
+  
+          // Reset form
+          document.querySelectorAll(".item-count").forEach(input => input.value = "");
+          document.getElementById("pickup-date").value = "";
+          document.getElementById("pickup-time").value = "";
+          document.getElementById("delivery-date").value = "";
+          document.getElementById("delivery-time").value = "";
+  
+        } else {
+          alert("Please log in first to place an order.");
+        }
+      });
+    });
+  </script>
+
+</html>/

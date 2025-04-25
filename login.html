@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DryMe Auth</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Your styling remains the same */
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+    .container h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .btn {
+      width: 100%;
+      padding: 0.7rem;
+      background: #4a90e2;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background: #357abd;
+    }
+    .link {
+      margin-top: 1rem;
+      text-align: center;
+    }
+    .link a {
+      color: #4a90e2;
+      text-decoration: none;
+    }
+  </style>
+
+  <!-- Firebase SDKs -->
+  <script type="module">
+    // Firebase imports (modular style)
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+    import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
+
+    // Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyCMOe5WGwL2g03J0O08C_H-_LVD1OjTWtg",
+      authDomain: "laundrywebapp-71232.firebaseapp.com",
+      projectId: "laundrywebapp-71232",
+      storageBucket: "laundrywebapp-71232.appspot.com",
+      messagingSenderId: "260962124147",
+      appId: "1:260962124147:web:be4871909dc42077638506",
+      databaseURL: "https://laundrywebapp-71232-default-rtdb.firebaseio.com"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getDatabase(app);
+
+    // DOM functions
+    window.showSignIn = function () {
+      document.getElementById("auth-container").innerHTML = `
+        <h2>Sign In</h2>
+        <form onsubmit="return firebaseSignIn()">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="loginEmail" required>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="loginPassword" required>
+          </div>
+          <button class="btn" type="submit">Login</button>
+          <div class="link">
+            <a href="#" onclick="showForgotPassword()">Forgot Password?</a><br>
+            Don't have an account? <a href="#" onclick="showSignUp()">Sign Up</a>
+          </div>
+        </form>`;
+    };
+
+    window.showSignUp = function () {
+      document.getElementById("auth-container").innerHTML = `
+        <h2>Sign Up</h2>
+        <form onsubmit="return firebaseSignUp()">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="fullName" required>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="signupEmail" required>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="signupPassword" required>
+          </div>
+          <button class="btn" type="submit">Register</button>
+          <div class="link">Already have an account? <a href="#" onclick="showSignIn()">Sign In</a></div>
+        </form>`;
+    };
+
+    window.showForgotPassword = function () {
+      document.getElementById("auth-container").innerHTML = `
+        <h2>Reset Password</h2>
+        <form onsubmit="return firebaseForgotPassword()">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="resetEmail" required>
+          </div>
+          <button class="btn" type="submit">Send Reset Link</button>
+          <div class="link"><a href="#" onclick="showSignIn()">Back to Sign In</a></div>
+        </form>`;
+    };
+
+    // Sign Up
+    window.firebaseSignUp = function () {
+      const email = document.getElementById("signupEmail").value;
+      const password = document.getElementById("signupPassword").value;
+      const fullName = document.getElementById("fullName").value;
+
+      createUserWithEmailAndPassword(auth, email, password)
+        .then(userCredential => {
+          const user = userCredential.user;
+          return set(ref(db, 'users/' + user.uid), {
+            fullName: fullName,
+            email: email
+          });
+        })
+        .then(() => {
+          alert("Account created!");
+          showSignIn();
+        })
+        .catch(error => {
+          alert(error.message);
+        });
+
+      return false;
+    };
+
+    // Sign In
+    window.firebaseSignIn = function () {
+      const email = document.getElementById("loginEmail").value;
+      const password = document.getElementById("loginPassword").value;
+
+      signInWithEmailAndPassword(auth, email, password)
+        .then(() => {
+          alert("Signed in successfully!");
+          localStorage.setItem("isLoggedIn", "true");
+          window.location.href = "about.html"; // Optional redirect
+        })
+        .catch(error => {
+          alert("Login failed: " + error.message);
+        });
+
+      return false;
+    };
+
+    // Forgot Password
+    window.firebaseForgotPassword = function () {
+      const email = document.getElementById("resetEmail").value;
+
+      sendPasswordResetEmail(auth, email)
+        .then(() => {
+          alert("Password reset email sent!");
+          showSignIn();
+        })
+        .catch(error => {
+          alert(error.message);
+        });
+
+      return false;
+    };
+
+    // Load default view
+    window.onload = showSignIn;
+  </script>
+</head>
+<body>
+  <div class="container" id="auth-container"></div>
+</body>
+</html>

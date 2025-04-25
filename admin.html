@@ -1,0 +1,263 @@
+<!DOCTYPE html> 
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>DRYME - Free Laundry Service Website Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    
+    <!-- Firebase SDK -->
+    
+    
+      
+</head>
+
+<body>
+    <!-- Topbar Start -->
+    <div class="container-fluid bg-primary py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-lg-left mb-2 mb-lg-0">
+                    <div class="d-inline-flex align-items-center">
+                        <a class="text-white pr-3" href="">FAQs</a>
+                        <span class="text-white">|</span>
+                        <a class="text-white px-3" href="">Help</a>
+                        <span class="text-white">|</span>
+                        <a class="text-white pl-3" href="">Support</a>
+                    </div>
+                </div>
+                <div class="col-md-6 text-center text-lg-right">
+                    <div class="d-inline-flex align-items-center">
+                        <a class="text-white px-3" href="">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a class="text-white px-3" href="">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a class="text-white px-3" href="">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a class="text-white px-3" href="">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a class="text-white pl-3" href="">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+    <!-- Navbar Start -->
+    <div class="container-fluid position-relative nav-bar p-0">
+        <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
+            <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 pl-3 pl-lg-5">
+                <a href="" class="navbar-brand">
+                    <h1 class="m-0 text-secondary"><span class="text-primary">DRY</span>ME</h1>
+                </a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto py-0">
+                        <a href="about.html" class="nav-item nav-link">Home</a>
+                        <a href="services.html" class="nav-item nav-link">Services</a>
+                        <a href="orderStatus.html" class="nav-item nav-link">OrderStatus</a>
+                        <a href="payment.html" class="nav-item nav-link">Payment</a>
+                        <a href="contact.html" class="nav-item nav-link">Contact Us</a>
+                        <a href="help.html" class="nav-item nav-link">Help</a>
+                        <a href="admin.html" class="nav-item nav-link">Admin</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+    <!-- Admin Orders Section -->
+    <section id="admin-orders" style="margin: 50px;">
+        <h2>Admin Panel - Manage Orders</h2>
+        <table id="ordersTable" border="1" cellpadding="10" style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Service</th>
+                    <th>Pickup</th>
+                    <th>Delivery</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="ordersBody">
+                <!-- Orders will be dynamically inserted here -->
+            </tbody>
+        </table>
+    </section>
+    
+    <!-- Footer Start -->
+    <div class="container-fluid bg-primary text-white mt-5 pt-5 px-sm-3 px-md-5">
+        <div class="row pt-5">
+            <div class="col-lg-3 col-md-6 mb-5">
+                <a href=""><h1 class="text-secondary mb-3"><span class="text-white">DRY</span>ME</h1></a>
+                <p>You can easily connect with us on our social media platforms to stay updated with the latest offers, news, and promotions.</p>
+                <div class="d-flex justify-content-start mt-4">
+                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 38px; height: 38px;" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 38px; height: 38px;" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 38px; height: 38px;" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 38px; height: 38px;" href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h4 class="text-white mb-4">Get In Touch</h4>
+                <p>Feel free to reach out to us via our contact form, email, or social media channels, and we'll be happy to assist you with any inquiries or support you need.</p>
+                <p><i class="fa fa-map-marker-alt mr-2"></i>Kabianga Street, Kericho,KENYA</p>
+                <p><i class="fa fa-phone-alt mr-2"></i>+254 111 929550</p>
+                <p><i class="fa fa-envelope mr-2"></i>kabiangacleaners@gmail.com</p>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h4 class="text-white mb-4">Quick Links</h4>
+                <div class="d-flex flex-column justify-content-start">
+                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>About Us</a>
+                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Services</a>
+                    <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Pricing</a>
+                    <a class="text-white" href="#"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h4 class="text-white mb-4">Newsletter</h4>
+                <form action="">
+                    <div class="form-group">
+                        <input type="text" class="form-control border-0" placeholder="Your Name" required="required" />
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control border-0" placeholder="Your Email" required="required" />
+                    </div>
+                    <div>
+                        <button class="btn btn-lg btn-secondary btn-block border-0" type="submit">Submit Now</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid bg-dark text-white py-4 px-sm-3 px-md-5">
+        <p class="m-0 text-center text-white">
+            &copy; <a class="text-white font-weight-medium" href="#">Your Site Name</a>. All Rights Reserved. 
+			
+			<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+			Designed by <a class="text-white font-weight-medium" href="https://htmlcodex.com">HTML Codex</a>
+        </p>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
+    <script src="js/main.js"></script>
+    <script type="module">
+        // Import Firebase SDK modules
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+        import { getDatabase, ref, onValue, update } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
+      
+        // Your Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyCMOe5WGwL2g03J0O08C_H-_LVD1OjTWtg",
+          authDomain: "laundrywebapp-71232.firebaseapp.com",
+          projectId: "laundrywebapp-71232",
+          storageBucket: "laundrywebapp-71232.appspot.com",
+          messagingSenderId: "260962124147",
+          appId: "1:260962124147:web:be4871909dc42077638506",
+          databaseURL: "https://laundrywebapp-71232-default-rtdb.firebaseio.com"
+        };
+      
+        // Initialize Firebase app and get database instance
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+      
+        // Fetch orders from Firebase and display in table
+        function fetchOrders() {
+          const ordersRef = ref(database, 'orders');
+          onValue(ordersRef, (snapshot) => {
+            const orders = snapshot.val();
+            const ordersBody = document.getElementById('ordersBody');
+            ordersBody.innerHTML = ''; // Clear old content
+      
+            if (orders) {
+              Object.entries(orders).forEach(([orderId, order]) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                  <td>${orderId}</td>
+                  <td>${order.service || 'N/A'}</td>
+                  <td>${order.pickup || 'N/A'}</td>
+                  <td>${order.delivery || 'N/A'}</td>
+                  <td id="status-${orderId}">${order.status || 'Pending'}</td>
+                  <td><button data-order-id="${orderId}" class="update-btn">Update Status</button></td>
+                `;
+                ordersBody.appendChild(row);
+              });
+      
+              // Add click listeners to update buttons
+              document.querySelectorAll('.update-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                  const orderId = button.getAttribute('data-order-id');
+                  updateOrderStatus(orderId);
+                });
+              });
+            } else {
+              ordersBody.innerHTML = '<tr><td colspan="6">No orders found.</td></tr>';
+            }
+          });
+        }
+      
+        // Function to update order status
+        function updateOrderStatus(orderId) {
+          const newStatus = prompt("Enter new status (e.g., 'Approved', 'Completed'):");
+          if (newStatus) {
+            const orderRef = ref(database, 'orders/' + orderId);
+            update(orderRef, { status: newStatus })
+              .then(() => {
+                // Update status text in the table
+                const statusCell = document.getElementById(`status-${orderId}`);
+                if (statusCell) statusCell.innerText = newStatus;
+              })
+              .catch((error) => {
+                console.error("Error updating order status:", error);
+              });
+          }
+        }
+      
+        // Run when DOM is fully loaded
+        window.addEventListener('DOMContentLoaded', fetchOrders);
+      </script>
+      
+</body>
+</html>
